@@ -1,7 +1,7 @@
 "use strict";
 
 const grid = document.getElementById("container");
-grid.style.border = "3px solid black";
+grid.style.border = "1px solid black";
 grid.style.gridTemplateColumns = "repeat(16, auto)";
 grid.style.display = "grid";
 
