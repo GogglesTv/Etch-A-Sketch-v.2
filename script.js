@@ -20,9 +20,16 @@ function createDiv() {
 createDiv();
 
 const cells = document.querySelectorAll(".cell");
+const resetBtn = document.querySelector("#reset");
 
 cells.forEach((cell) => {
   cell.addEventListener("mouseover", () => {
     cell.style.backgroundColor = "black";
+  });
+});
+
+resetBtn.addEventListener("click", () => {
+  cells.forEach((cell) => {
+    cell.style.backgroundColor = "white";
   });
 });
