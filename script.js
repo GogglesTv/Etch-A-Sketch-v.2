@@ -9,6 +9,7 @@ function createDiv() {
   for (let i = 0; i < 16; i++) {
     for (let j = 0; j < 16; j++) {
       const div = document.createElement("div");
+      div.classList.add("cell");
       div.style.border = ".75px solid black";
       div.style.padding = "10px";
       grid.appendChild(div);
@@ -17,3 +18,11 @@ function createDiv() {
 }
 
 createDiv();
+
+const cells = document.querySelectorAll(".cell");
+
+cells.forEach((cell) => {
+  cell.addEventListener("mouseover", () => {
+    cell.style.backgroundColor = "black";
+  });
+});
