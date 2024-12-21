@@ -15,9 +15,29 @@ h1 {
 
 button#reset {
   margin-top: 30px;
-  border: 1px solid black;
+  border: 2px solid black;
   padding: 5px 15px;
   border-radius: 5px;
   font-weight: 900;
   font-size: 18px;
+}
+
+button#reset:hover,
+#custom-container > button:hover {
+  cursor: pointer;
+}
+
+#custom-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+#custom-container > button {
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 900;
+  padding: 5px 15px;
+  width: 200px;
 }
