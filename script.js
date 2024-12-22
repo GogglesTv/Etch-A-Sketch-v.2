@@ -63,6 +63,7 @@ customGrid.addEventListener("click", (event) => {
       createDiv();
       break;
     case "custom-color":
+      cells.forEach((cell) => (cell.style.backgroundColor = "white"));
       gridColor = prompt("Type in a color");
       break;
   }
