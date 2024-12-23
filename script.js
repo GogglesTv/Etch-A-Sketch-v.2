@@ -33,7 +33,6 @@ function createDiv() {
 
 createDiv();
 
-const cells = document.querySelectorAll(".cell");
 const resetBtn = document.querySelector("#reset");
 const customGrid = document.querySelector("#custom-container");
 let gridColor = "black";
@@ -47,12 +46,14 @@ grid.addEventListener("mouseover", (event) => {
 });
 
 resetBtn.addEventListener("click", () => {
+  const cells = document.querySelectorAll(".cell");
   cells.forEach((cell) => {
     cell.style.backgroundColor = "white";
   });
 });
 
 customGrid.addEventListener("click", (event) => {
+  const cells = document.querySelectorAll(".cell");
   let target = event.target;
 
   switch (target.id) {
