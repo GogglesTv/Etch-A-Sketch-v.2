@@ -1,49 +1,28 @@
 "use strict";
 
-const grid = document.getElementById("container");
-grid.style.border = "1px solid black";
-grid.style.gridTemplateColumns = "repeat(16, auto)";
-grid.style.display = "grid";
+let gridColor = "black";
 
-let newGrid = 0;
+function createGrid(size) {
+  const grid = document.getElementById("container");
+  grid.innerHTML = "";
+  grid.style.display = "grid";
+  grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
 
-function createDiv() {
-  if (newGrid === 0) {
-    for (let i = 0; i < 16; i++) {
-      for (let j = 0; j < 16; j++) {
-        const div = document.createElement("div");
-        div.classList.add("cell");
-        div.style.border = ".75px solid black";
-        div.style.padding = "10px";
-        grid.appendChild(div);
-      }
-    }
-  } else {
-    for (let i = 0; i < newGrid; i++) {
-      for (let j = 0; j < newGrid; j++) {
-        const div = document.createElement("div");
-        div.classList.add("cell");
-        div.style.border = ".75px solid black";
-        div.style.padding = "10px";
-        grid.appendChild(div);
-      }
-    }
+  for (let i = 0; i < size * size; i++) {
+    const cell = document.createElement("div");
+    cell.classList.add("cell");
+    cell.style.border = ".75px solid";
+    cell.addEventListener("mouseover", () => {
+      cell.style.backgroundColor = gridColor;
+    });
+    grid.appendChild(cell);
   }
 }
 
-createDiv();
+createGrid(16);
 
 const resetBtn = document.querySelector("#reset");
 const customGrid = document.querySelector("#custom-container");
-let gridColor = "black";
-
-grid.addEventListener("mouseover", (event) => {
-  let target = event.target;
-  console.log(target.classList);
-  if (target.classList.contains("cell")) {
-    target.style.backgroundColor = gridColor;
-  }
-});
 
 resetBtn.addEventListener("click", () => {
   const cells = document.querySelectorAll(".cell");
@@ -58,10 +37,9 @@ customGrid.addEventListener("click", (event) => {
 
   switch (target.id) {
     case "custom-grid":
-      newGrid = parseFloat(prompt("Type in a number"));
-      grid.style.gridTemplateColumns = `repeat(${newGrid}, auto)`;
+      let newGrid = parseFloat(prompt("Type in a number 1-100"));
       cells.forEach((cell) => cell.remove());
-      createDiv();
+      createGrid(newGrid);
       break;
     case "custom-color":
       cells.forEach((cell) => (cell.style.backgroundColor = "white"));
